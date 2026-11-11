@@ -12,7 +12,7 @@ function lerTexto(nome: string, padrao: string): string {
 export const env = {
   porta: Number(lerTexto('PORT', '3333')),
   db: {
-    host: lerTexto('DB_HOST', 'localhost'),
+    host: lerTexto('DB_HOST', '127.0.0.1'),
     porta: Number(lerTexto('DB_PORT', '3306')),
     usuario: lerTexto('DB_USER', 'root'),
     senha: process.env.DB_PASSWORD ?? '',

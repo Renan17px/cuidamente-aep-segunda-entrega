@@ -44,9 +44,17 @@ export function middlewareDeErro(erro: unknown, _req: Request, res: Response, _n
     res.status(409).json({ erro: 'Registro duplicado: este e-mail já está cadastrado.' });
     return;
   }
-  if (codigo === 'ECONNREFUSED' || codigo === 'ER_ACCESS_DENIED_ERROR' || codigo === 'ER_BAD_DB_ERROR') {
-    console.error('[banco] Falha de conexão:', codigo);
-    res.status(503).json({ erro: 'Banco de dados indisponível. Verifique a configuração do MySQL.' });
+  const errosDeBanco: Record<string, string> = {
+    ECONNREFUSED: 'O MySQL não está rodando ou a porta (DB_PORT) está errada.',
+    ETIMEDOUT: 'O MySQL não respondeu. Confira DB_HOST e DB_PORT no .env.',
+    ENOTFOUND: 'Endereço do MySQL (DB_HOST) não encontrado.',
+    ER_ACCESS_DENIED_ERROR: 'Usuário ou senha do MySQL incorretos no arquivo src/backend/.env.',
+    ER_BAD_DB_ERROR: 'O banco "cuidamente" ainda não existe. Rode: npm run db:init',
+    ER_NO_SUCH_TABLE: 'As tabelas não foram criadas. Rode: npm run db:init',
+  };
+  if (codigo && errosDeBanco[codigo]) {
+    console.error('[banco] Falha:', codigo);
+    res.status(503).json({ erro: `Banco de dados indisponível: ${errosDeBanco[codigo]}` });
     return;
   }
   // Erros de validação lançados pelos modelos (new Error('...'))

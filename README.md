@@ -167,9 +167,14 @@ Acesse **http://localhost:3333**
 
 ### Problemas comuns
 
+Se a tela de login mostrar um erro, a mensagem diz a causa. Confira também o terminal: as linhas `[api]` mostram se o back-end conectou no banco.
+
 | Mensagem | Solução |
 |---|---|
-| `Não foi possível conectar ao MySQL (ECONNREFUSED)` | O MySQL não está rodando ou a porta em `DB_PORT` está errada. |
+| `A API não respondeu` | O back-end não está rodando. Use `npm run dev` na pasta raiz (sobe API e tela juntas) e veja o erro nas linhas `[api]`. |
+| `Usuário ou senha do MySQL incorretos` | Ajuste `DB_USER` e `DB_PASSWORD` em `src/backend/.env` e reinicie o `npm run dev`. |
+| `O banco "cuidamente" ainda não existe` | Rode `npm run db:init`. |
+| `Não foi possível conectar ao MySQL (ECONNREFUSED)` | O MySQL não está rodando, ou a porta em `DB_PORT` está errada. Mantenha `DB_HOST=127.0.0.1` (no Windows, `localhost` pode falhar). |
 | `ER_ACCESS_DENIED_ERROR` | Usuário/senha do `.env` incorretos. |
 | `ER_BAD_DB_ERROR` | O banco ainda não foi criado: rode `npm run db:init`. |
 | Porta 3333 ou 5173 em uso | Mude `PORT` no `.env` (e o proxy em `src/frontend/vite.config.ts`). |

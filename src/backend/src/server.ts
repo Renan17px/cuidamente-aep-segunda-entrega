@@ -34,7 +34,7 @@ async function iniciar(): Promise<void> {
     console.error(`[banco] Não foi possível conectar ao MySQL (${codigo}).`);
     console.error('        Verifique o arquivo src/backend/.env e se o MySQL está rodando.');
     console.error('        Para criar o banco: npm run db:init');
-    process.exit(1);
+    console.error('        A API vai subir mesmo assim e responder com o erro até o banco ficar disponível.');
   }
   app.listen(env.porta, () => {
     console.log(`[api] CuidaMente rodando em http://localhost:${env.porta}`);

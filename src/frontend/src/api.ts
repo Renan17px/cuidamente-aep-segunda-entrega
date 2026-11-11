@@ -51,7 +51,14 @@ async function requisitar<T>(metodo: string, caminho: string, corpo?: unknown): 
       salvarToken(null);
       window.dispatchEvent(new Event('cuidamente:sessao-expirada'));
     }
-    throw new ErroApi((dados as { erro?: string }).erro ?? 'Algo deu errado. Tente novamente.', resposta.status);
+    const mensagemApi = (dados as { erro?: string }).erro;
+    if (!mensagemApi && resposta.status >= 500) {
+      throw new ErroApi(
+        'A API não respondeu. Confira no terminal se o back-end ([api]) está rodando na porta 3333.',
+        resposta.status,
+      );
+    }
+    throw new ErroApi(mensagemApi ?? 'Algo deu errado. Tente novamente.', resposta.status);
   }
   return dados as T;
 }
