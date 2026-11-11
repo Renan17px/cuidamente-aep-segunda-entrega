@@ -1,0 +1,20 @@
+# Sobe apenas o MySQL 8 já com as tabelas e os dados iniciais.
+# Uso: docker compose up -d   (depois configure DB_PASSWORD=cuidamente no src/backend/.env)
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: cuidamente-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: cuidamente
+      TZ: America/Sao_Paulo
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - ./database/seed.sql:/docker-entrypoint-initdb.d/02-seed.sql:ro
+      - cuidamente-dados:/var/lib/mysql
+
+volumes:
+  cuidamente-dados:

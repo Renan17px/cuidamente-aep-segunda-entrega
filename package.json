@@ -1,0 +1,20 @@
+{
+  "name": "cuidamente-aep",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CuidaMente - Plataforma web de triagem e suporte em saúde mental (AEP Unicesumar 2026.2)",
+  "scripts": {
+    "instalar": "npm install && npm install --prefix src/backend && npm install --prefix src/frontend",
+    "db:init": "npm run db:init --prefix src/backend",
+    "dev": "concurrently -n api,web -c green,blue \"npm run dev --prefix src/backend\" \"npm run dev --prefix src/frontend\"",
+    "build": "npm run build --prefix src/backend && npm run build --prefix src/frontend",
+    "start": "npm start --prefix src/backend"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^9.2.5"
+  }
+}
