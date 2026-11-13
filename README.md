@@ -32,7 +32,7 @@ O CuidaMente aplica uma triagem de saúde mental em formato de chatbot (baseada 
 | Sprint 2 · 06/10 – 12/10 | Chatbot de Triagem | COMO UM usuário EU QUERO responder perguntas guiadas pelo chatbot PARA QUE eu possa entender meu estado emocional atual. | Adriel |
 | Sprint 3 · 13/10 – 19/10 | Histórico e Dashboard | COMO UM usuário EU QUERO ver um gráfico com minhas triagens anteriores PARA QUE eu possa acompanhar minha evolução. | Lucas |
 | Sprint 4 · 20/10 – 26/10 | Lembretes e Recursos | COMO UM usuário EU QUERO configurar lembretes e acessar canais de apoio PARA QUE eu mantenha uma rotina de autocuidado. | Gustavo |
-| Sprint 5 · 27/10 – 02/11 | Modo Crise e Testes | COMO UM usuário em risco EU QUERO receber alertas de emergência imediatos PARA QUE eu possa acessar ajuda rapidamente. | Gustavo |
+| Sprint 5 · 27/10 – 02/11 | Modo Crise e Testes | COMO UM usuário em risco EU QUERO receber alertas de emergência imediatos PARA QUE eu possa acessar ajuda rapidamente. | Renan/Lucas |
 
 ---
 
